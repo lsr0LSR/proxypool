@@ -8,7 +8,6 @@ import (
 	"time"
 
 	"github.com/ivpusic/grpool"
-
 	"github.com/Dreamacro/clash/adapter"
 )
 
