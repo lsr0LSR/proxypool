@@ -15,9 +15,9 @@ require (
 	github.com/ghodss/yaml v1.0.0
 	github.com/gin-contrib/cache v1.2.0
 	github.com/gin-gonic/gin v1.8.1
-	github.com/go-playground/validator v10.11.0 // indirect
+	github.com/go-playground/validator/v10 v10.3.0 // indirect
 	github.com/gobwas/glob v0.2.3 // indirect
-	github.com/gocolly/colly v2.1.0
+	github.com/gocolly/colly v1.2.0
 	github.com/golang/protobuf v1.5.2 // indirect
 	github.com/heroku/x v0.0.26
 	github.com/ivpusic/grpool v1.0.0
