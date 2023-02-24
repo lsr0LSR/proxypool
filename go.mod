@@ -1,9 +1,9 @@
-module github.com/fzdy-zz/proxypool/
+module github.com/fzdy-zz/proxypool
 
 go 1.15
 
 require (
-	github.com/Dreamacro/clash v1.11.4
+	github.com/Dreamacro/clash v1.13.0
 	github.com/PuerkitoBio/goquery v1.5.1 // indirect
 	github.com/andybalholm/cascadia v1.2.0 // indirect
 	github.com/antchfx/htmlquery v1.2.3 // indirect
