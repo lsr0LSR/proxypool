@@ -2,6 +2,9 @@ package app
 
 import (
 	"fmt"
+	"sync"
+	"time"
+
 	"github.com/fzdy-zz/proxypool/config"
 	"github.com/fzdy-zz/proxypool/internal/cache"
 	"github.com/fzdy-zz/proxypool/internal/database"
@@ -10,8 +13,6 @@ import (
 	"github.com/fzdy-zz/proxypool/pkg/healthcheck"
 	"github.com/fzdy-zz/proxypool/pkg/provider"
 	"github.com/fzdy-zz/proxypool/pkg/proxy"
-	"sync"
-	"time"
 )
 
 var location, _ = time.LoadLocation("PRC")
@@ -55,7 +56,7 @@ func CrawlGo() {
 
 	// Clean Clash unsupported proxy because health check depends on clash
 	proxies = provider.Clash{
-		provider.Base{
+		Base: provider.Base{
 			Proxies: &proxies,
 		},
 	}.CleanProxies()
@@ -120,12 +121,12 @@ func CrawlGo() {
 	// 测速
 	speedTestNew(proxies)
 	cache.SetString("clashproxies", provider.Clash{
-		provider.Base{
+		Base: provider.Base{
 			Proxies: &proxies,
 		},
 	}.Provide()) // update static string provider
 	cache.SetString("surgeproxies", provider.Surge{
-		provider.Base{
+		Base: provider.Base{
 			Proxies: &proxies,
 		},
 	}.Provide())

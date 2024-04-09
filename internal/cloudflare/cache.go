@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/fzdy-zz/proxypool/config"
 	"github.com/cloudflare/cloudflare-go"
+	"github.com/fzdy-zz/proxypool/config"
 )
 
 func test() {
@@ -27,4 +27,5 @@ func test() {
 	}
 	// Print zone details
 	fmt.Println(zone)
+
 }
