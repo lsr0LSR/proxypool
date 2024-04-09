@@ -8,7 +8,7 @@ import (
 	"time"
 
 	"github.com/ivpusic/grpool"
-	"github.com/Dreamacro/clash/adapter"
+	"github.com/metacubex/mihomo/adapter"
 )
 
 const defaultURLTestTimeout = time.Second * 5

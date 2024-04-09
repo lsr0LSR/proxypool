@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/Dreamacro/clash/adapter"
+	"github.com/metacubex/mihomo/adapter"
 	"github.com/fzdy-zz/proxypool/log"
 	"github.com/fzdy-zz/proxypool/pkg/proxy"
 	"github.com/ivpusic/grpool"

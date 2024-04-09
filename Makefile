@@ -21,7 +21,7 @@ PLATFORM_LIST = \
 	freebsd-amd64
 
 
-all: linux-amd64 darwin-amd64
+all: linux-armv8 linux-amd64
 
 docker:
 	$(GOBUILD) -o $(BINDIR)/$(NAME)-$@
