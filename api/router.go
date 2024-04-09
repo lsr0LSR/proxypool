@@ -1,14 +1,15 @@
 package api
 
 import (
-	binhtml "github.com/fzdy-zz/proxypool/internal/bindata/html"
-	"github.com/fzdy-zz/proxypool/log"
 	"html/template"
 	"net/http"
 	"os"
 	"strconv"
 	"strings"
 	"time"
+
+	binhtml "github.com/fzdy-zz/proxypool/internal/bindata/html"
+	"github.com/fzdy-zz/proxypool/log"
 
 	"github.com/fzdy-zz/proxypool/config"
 	appcache "github.com/fzdy-zz/proxypool/internal/cache"
@@ -48,6 +49,9 @@ func setupRouter() {
 			"ss_proxies_count":     appcache.SSProxiesCount,
 			"ssr_proxies_count":    appcache.SSRProxiesCount,
 			"vmess_proxies_count":  appcache.VmessProxiesCount,
+			"vless_proxies_count":  appcache.VlessProxiesCount,
+			"hy2_proxies_count":    appcache.Hy2ProxiesCount,
+			"hy_proxies_count":     appcache.HyProxiesCount,
 			"trojan_proxies_count": appcache.TrojanProxiesCount,
 			"useful_proxies_count": appcache.UsefullProxiesCount,
 			"last_crawl_time":      appcache.LastCrawlTime,
@@ -114,7 +118,7 @@ func setupRouter() {
 		} else if proxyTypes == "all" {
 			proxies := appcache.GetProxies("allproxies")
 			clash := provider.Clash{
-				provider.Base{
+				Base: provider.Base{
 					Proxies:    &proxies,
 					Types:      proxyTypes,
 					Country:    proxyCountry,
@@ -127,7 +131,7 @@ func setupRouter() {
 		} else {
 			proxies := appcache.GetProxies("proxies")
 			clash := provider.Clash{
-				provider.Base{
+				Base: provider.Base{
 					Proxies:    &proxies,
 					Types:      proxyTypes,
 					Country:    proxyCountry,
@@ -196,8 +200,8 @@ func setupRouter() {
 		proxies := appcache.GetProxies("proxies")
 		ssSub := provider.SSSub{
 			Base: provider.Base{
-				Proxies: &proxies,
-				Types:   "ss",
+				Proxies:    &proxies,
+				Types:      "ss",
 				Country:    proxyCountry,
 				NotCountry: proxyNotCountry,
 				Speed:      proxySpeed,
@@ -214,8 +218,8 @@ func setupRouter() {
 		proxies := appcache.GetProxies("proxies")
 		ssrSub := provider.SSRSub{
 			Base: provider.Base{
-				Proxies: &proxies,
-				Types:   "ssr",
+				Proxies:    &proxies,
+				Types:      "ssr",
 				Country:    proxyCountry,
 				NotCountry: proxyNotCountry,
 				Speed:      proxySpeed,
@@ -232,8 +236,8 @@ func setupRouter() {
 		proxies := appcache.GetProxies("proxies")
 		vmessSub := provider.VmessSub{
 			Base: provider.Base{
-				Proxies: &proxies,
-				Types:   "vmess",
+				Proxies:    &proxies,
+				Types:      "vmess",
 				Country:    proxyCountry,
 				NotCountry: proxyNotCountry,
 				Speed:      proxySpeed,
@@ -250,8 +254,8 @@ func setupRouter() {
 		proxies := appcache.GetProxies("proxies")
 		sip002Sub := provider.SIP002Sub{
 			Base: provider.Base{
-				Proxies: &proxies,
-				Types:   "ss",
+				Proxies:    &proxies,
+				Types:      "ss",
 				Country:    proxyCountry,
 				NotCountry: proxyNotCountry,
 				Speed:      proxySpeed,
@@ -268,8 +272,8 @@ func setupRouter() {
 		proxies := appcache.GetProxies("proxies")
 		trojanSub := provider.TrojanSub{
 			Base: provider.Base{
-				Proxies: &proxies,
-				Types:   "trojan",
+				Proxies:    &proxies,
+				Types:      "trojan",
 				Country:    proxyCountry,
 				NotCountry: proxyNotCountry,
 				Speed:      proxySpeed,

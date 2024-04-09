@@ -1,12 +1,13 @@
 package cron
 
 import (
+	"runtime"
+
 	"github.com/fzdy-zz/proxypool/config"
 	"github.com/fzdy-zz/proxypool/internal/cache"
 	"github.com/fzdy-zz/proxypool/log"
 	"github.com/fzdy-zz/proxypool/pkg/healthcheck"
 	"github.com/fzdy-zz/proxypool/pkg/provider"
-	"runtime"
 
 	"github.com/fzdy-zz/proxypool/internal/app"
 	"github.com/jasonlvhit/gocron"
@@ -39,12 +40,12 @@ func speedTestTask() {
 
 	app.SpeedTest(pl)
 	cache.SetString("clashproxies", provider.Clash{
-		provider.Base{
+		Base: provider.Base{
 			Proxies: &pl,
 		},
 	}.Provide()) // update static string provider
 	cache.SetString("surgeproxies", provider.Surge{
-		provider.Base{
+		Base: provider.Base{
 			Proxies: &pl,
 		},
 	}.Provide())
@@ -66,12 +67,12 @@ func frequentSpeedTestTask() {
 
 	app.SpeedTest(pl)
 	cache.SetString("clashproxies", provider.Clash{
-		provider.Base{
+		Base: provider.Base{
 			Proxies: &pl_all,
 		},
 	}.Provide()) // update static string provider
 	cache.SetString("surgeproxies", provider.Surge{
-		provider.Base{
+		Base: provider.Base{
 			Proxies: &pl_all,
 		},
 	}.Provide())
