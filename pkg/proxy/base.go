@@ -137,8 +137,8 @@ func ParseProxyFromClashProxy(p map[string]interface{}) (proxy Proxy, err error)
 			return nil, err
 		}
 		return &proxy, nil
-	case "trojan":
-		var proxy Trojan
+	case "vless":
+		var proxy Vless
 		err := json.Unmarshal(pjson, &proxy)
 		if err != nil {
 			return nil, err

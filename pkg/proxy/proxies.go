@@ -29,8 +29,8 @@ func init() {
 	sortType["ss"] = 1
 	sortType["ssr"] = 2
 	sortType["vmess"] = 3
-	sortType["trojan"] = 4
-	sortType["vless"] = 5
+	sortType["vless"] = 4
+	sortType["trojan"] = 5
 	sortType["hysteria2"] = 6
 	sortType["hysteria"] = 7
 

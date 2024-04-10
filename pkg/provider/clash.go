@@ -60,6 +60,10 @@ func checkClashSupport(p proxy.Proxy) bool {
 			return true
 		}
 	case "vless":
+		vless := p.(*proxy.Vless)
+		if tool.CheckInList(vlessCipherList, vless.UUID) {
+			return true
+		}
 		return true
 	case "hysteria":
 		return true
@@ -96,6 +100,13 @@ var ssrProtocolList = []string{
 }
 
 var vmessCipherList = []string{
+	"auto",
+	"aes-128-gcm",
+	"chacha20-poly1305",
+	"none",
+}
+
+var vlessCipherList = []string{
 	"auto",
 	"aes-128-gcm",
 	"chacha20-poly1305",

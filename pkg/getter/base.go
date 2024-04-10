@@ -85,5 +85,5 @@ func AssertTypeStringNotNull(i interface{}) (str string, err error) {
 	default:
 		return "", errors.New("type is not string")
 	}
-	return "", nil
+
 }
