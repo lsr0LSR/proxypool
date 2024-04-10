@@ -13,7 +13,7 @@ require (
 	github.com/heroku/x v0.2.0
 	github.com/ivpusic/grpool v1.0.0
 	github.com/jasonlvhit/gocron v0.0.1
-	github.com/metacubex/mihomo v1.11.9-0.20240408021529-72df27be44d1
+	github.com/metacubex/mihomo v1.11.9-0.20240410073428-16fadd24418e
 	github.com/oschwald/geoip2-golang v1.9.0
 	github.com/patrickmn/go-cache v2.1.0+incompatible
 	github.com/robertkrimen/otto v0.3.0
@@ -95,7 +95,7 @@ require (
 	github.com/metacubex/gopacket v1.1.20-0.20230608035415-7e2f98a3e759 // indirect
 	github.com/metacubex/gvisor v0.0.0-20240320004321-933faba989ec // indirect
 	github.com/metacubex/quic-go v0.42.1-0.20240319071510-a251e5c66a5c // indirect
-	github.com/metacubex/sing-quic v0.0.0-20240310154810-47bca850fc01 // indirect
+	github.com/metacubex/sing-quic v0.0.0-20240409064816-c16ac6b1f4b4 // indirect
 	github.com/metacubex/sing-shadowsocks v0.2.6 // indirect
 	github.com/metacubex/sing-shadowsocks2 v0.2.0 // indirect
 	github.com/metacubex/sing-vmess v0.1.9-0.20231207122118-72303677451f // indirect
@@ -161,4 +161,4 @@ require (
 	lukechampine.com/blake3 v1.2.1 // indirect
 )
 
-replace github.com/metacubex/mihomo => github.com/MetaCubeX/mihomo v1.11.9-0.20240408021529-72df27be44d1 // indirect
+replace github.com/metacubex/mihomo => github.com/MetaCubeX/mihomo v1.11.9-0.20240410073428-16fadd24418e // indirect
