@@ -2,9 +2,10 @@ package proxy
 
 import (
 	"fmt"
+	"testing"
+
 	"github.com/fzdy-zz/proxypool/pkg/tool"
 	"github.com/ghodss/yaml"
-	"testing"
 )
 
 func TestSSLink(t *testing.T) {
@@ -99,4 +100,20 @@ func TestSSRClashYaml(t *testing.T) {
 	fmt.Println(ssrp)
 	fmt.Println(ssrp.ToClash())
 
+}
+
+func TestVlessLink(t *testing.T) {
+	//v, err := ParseVmessLink("vmess://ew0KICAidiI6ICIyIiwNCiAgInBzIjogIuW+ruS/oeWFrOS8l+WPtyDlpJrlvannmoTlpKfljYPkuJbnlYwiLA0KICAiYWRkIjogInMyNzEuc25vZGUueHl6IiwNCiAgInBvcnQiOiAiNDQzIiwNCiAgImlkIjogIjZhOTAwZDYzLWNiOTItMzVhMC1hZWYwLTNhMGMxMWFhODUyMyIsDQogICJhaWQiOiAiMSIsDQogICJuZXQiOiAid3MiLA0KICAidHlwZSI6ICJub25lIiwNCiAgImhvc3QiOiAiczI3MS5zbm9kZS54eXoiLA0KICAicGF0aCI6ICIvcGFuZWwiLA0KICAidGxzIjogInRscyINCn0=")
+	//v, err := ParseVmessLink("vmess://YXV0bzphMjA1ZjRiNi0xMzg2LTQ3NjUtYjQ0YS02YjFiYmE0N2Q1MzdAMTQyLjQuMTA0LjIyNjo0NDM?remarks=%F0%9F%87%BA%F0%9F%87%B8%20US_616%20caicai&obfsParam=www.036452916.xyz&path=/footers&obfs=websocket&tls=1&allowInsecure=1&alterId=64")
+	v, err := ParseVlessLink("vless://e4e7b149-8bd8-4266-8cbb-0987604dbc87@104.16.222.204:443?encryption=none&security=tls&sni=toujiediansigema.5112233.xyz&type=ws&host=toujiediansigema.5112233.xyz&path=tg%40juzibaipiao%E5%81%B7%E8%8A%82%E7%82%B9%E6%AD%BB%E5%90%97#%F0%9F%87%BA%F0%9F%87%B8.US.%E7%BE%8E%E5%9B%BD.3")
+	if err != nil {
+		t.Error(err)
+	}
+	fmt.Println(v)
+	fmt.Println(v.Link())
+	v, err = ParseVlessLink(v.Link())
+	if err != nil {
+		t.Error(err)
+	}
+	fmt.Println(v)
 }

@@ -1,8 +1,9 @@
 package provider
 
 import (
-	"github.com/fzdy-zz/proxypool/pkg/tool"
 	"strings"
+
+	"github.com/fzdy-zz/proxypool/pkg/tool"
 
 	"github.com/fzdy-zz/proxypool/pkg/proxy"
 )
@@ -58,6 +59,12 @@ func checkClashSupport(p proxy.Proxy) bool {
 		if tool.CheckInList(proxy.SSCipherList, ss.Cipher) {
 			return true
 		}
+	case "vless":
+		return true
+	case "hysteria":
+		return true
+	case "hysteria2":
+		return true
 	case "trojan":
 		return true
 	default:

@@ -3,8 +3,9 @@ package proxy
 import (
 	"encoding/json"
 	"errors"
-	"github.com/fzdy-zz/proxypool/pkg/geoIp"
 	"strings"
+
+	"github.com/fzdy-zz/proxypool/pkg/geoIp"
 )
 
 /* Base implements interface Proxy. It's the basic proxy struct. Vmess etc extends Base*/
@@ -86,6 +87,8 @@ func ParseProxyFromLink(link string) (p Proxy, err error) {
 		p, err = ParseSSRLink(link)
 	} else if strings.HasPrefix(link, "vmess://") {
 		p, err = ParseVmessLink(link)
+	} else if strings.HasPrefix(link, "vless://") {
+		p, err = ParseVlessLink(link)
 	} else if strings.HasPrefix(link, "ss://") {
 		p, err = ParseSSLink(link)
 	} else if strings.HasPrefix(link, "trojan://") {

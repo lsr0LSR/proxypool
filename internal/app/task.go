@@ -101,7 +101,7 @@ func CrawlGo() {
 
 	// 中转检测并命名
 	healthcheck.RelayCheck(proxies)
-	for i, _ := range proxies {
+	for i := range proxies {
 		if s, ok := healthcheck.ProxyStats.Find(proxies[i]); ok {
 			if s.Relay == true {
 				_, c, e := geoIp.GeoIpDB.Find(s.OutIp)

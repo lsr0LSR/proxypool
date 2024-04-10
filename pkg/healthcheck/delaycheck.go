@@ -3,9 +3,10 @@ package healthcheck
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/fzdy-zz/proxypool/pkg/proxy"
 	"sync"
 	"time"
+
+	"github.com/fzdy-zz/proxypool/pkg/proxy"
 
 	"github.com/ivpusic/grpool"
 	"github.com/metacubex/mihomo/adapter"
@@ -92,7 +93,9 @@ func testDelay(p proxy.Proxy) (delay uint16, err error) {
 			return 0, nil // todo 暂无方法测试h2的延迟，clash对于h2的connection会阻塞
 		}
 	}
-
+	if p.TypeName() == "vless" {
+		return 0, nil
+	}
 	clashProxy, err := adapter.ParseProxy(pmap)
 	if err != nil {
 		fmt.Println(err.Error())

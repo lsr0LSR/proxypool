@@ -4,13 +4,14 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/metacubex/mihomo/adapter"
-	"github.com/fzdy-zz/proxypool/log"
-	"github.com/fzdy-zz/proxypool/pkg/proxy"
-	"github.com/ivpusic/grpool"
 	"net"
 	"sync"
 	"time"
+
+	"github.com/fzdy-zz/proxypool/log"
+	"github.com/fzdy-zz/proxypool/pkg/proxy"
+	"github.com/ivpusic/grpool"
+	"github.com/metacubex/mihomo/adapter"
 )
 
 func RelayCheck(proxies proxy.ProxyList) {
@@ -82,7 +83,9 @@ func testRelay(p proxy.Proxy) (outip string, err error) {
 			return "", nil // todo 暂无方法测试h2的延迟，clash对于h2的connection会阻塞
 		}
 	}
-
+	if p.TypeName() == "vless" {
+		return "", err
+	}
 	clashProxy, err := adapter.ParseProxy(pmap)
 	if err != nil {
 		return "", err
