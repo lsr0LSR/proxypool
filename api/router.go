@@ -50,8 +50,6 @@ func setupRouter() {
 			"ssr_proxies_count":    appcache.SSRProxiesCount,
 			"vmess_proxies_count":  appcache.VmessProxiesCount,
 			"vless_proxies_count":  appcache.VlessProxiesCount,
-			"hy2_proxies_count":    appcache.Hy2ProxiesCount,
-			"hy_proxies_count":     appcache.HyProxiesCount,
 			"trojan_proxies_count": appcache.TrojanProxiesCount,
 			"useful_proxies_count": appcache.UsefullProxiesCount,
 			"last_crawl_time":      appcache.LastCrawlTime,

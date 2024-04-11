@@ -83,9 +83,12 @@ func testRelay(p proxy.Proxy) (outip string, err error) {
 			return "", nil // todo 暂无方法测试h2的延迟，clash对于h2的connection会阻塞
 		}
 	}
-	if p.TypeName() == "vless" {
-		return "", err
-	}
+	//if p.TypeName() == "vless" {
+	//	if network, ok := pmap["network"]; ok && network.(string) == "h2" {
+	//		return "", nil
+	//	}
+	//	return "", err
+	//}
 	clashProxy, err := adapter.ParseProxy(pmap)
 	if err != nil {
 		return "", err
