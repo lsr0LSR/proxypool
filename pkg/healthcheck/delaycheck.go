@@ -58,6 +58,7 @@ func CleanBadProxiesWithGrpool(proxies []proxy.Proxy) (cproxies []proxy.Proxy) {
 	}()
 
 	okMap := make(map[string]struct{})
+
 	for { // Note: 无限循环，直到能读取到done
 		select {
 		case ps := <-c:
@@ -93,9 +94,10 @@ func testDelay(p proxy.Proxy) (delay uint16, err error) {
 			return 0, nil // todo 暂无方法测试h2的延迟，clash对于h2的connection会阻塞
 		}
 	}
-	if p.TypeName() == "vless" {
-		return 0, nil
-	}
+
+	//	if p.TypeName() == "vless" {
+	//		return 0, nil
+	//	}
 	clashProxy, err := adapter.ParseProxy(pmap)
 	if err != nil {
 		fmt.Println(err.Error())
@@ -103,10 +105,20 @@ func testDelay(p proxy.Proxy) (delay uint16, err error) {
 	}
 
 	sTime := time.Now()
-	err = HTTPHeadViaProxy(clashProxy, "https://www.youtube.com/generate_204")
+	err = HTTPHeadViaProxy(clashProxy, "http://www.apple.com/library/test/success.html")
+	//err = HTTPHeadViaProxy(clashProxy, "https://www.youtube.com/generate_204")
+
+	//自定义添加添加协议检测点
+	if p.TypeName() == "vless" && err != nil {
+		fmt.Println("\n P测试节点:", p)
+		// fmt.Println("\n testDelay pmap目标 :", pmap)
+		fmt.Println("err结果 :", err)
+	}
+
 	if err != nil {
 		return 0, err
 	}
+
 	fTime := time.Now()
 	delay = uint16(fTime.Sub(sTime) / time.Millisecond)
 

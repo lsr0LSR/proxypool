@@ -2,15 +2,16 @@ package log
 
 import (
 	"fmt"
-	log "github.com/sirupsen/logrus"
-	"github.com/x-cray/logrus-prefixed-formatter"
 	"os"
 	"path/filepath"
 	"sync"
+
+	log "github.com/sirupsen/logrus"
+	prefixed "github.com/x-cray/logrus-prefixed-formatter"
 )
 
 var (
-	level      = INFO
+	level      = DEBUG
 	fileLogger = log.New()
 	fileMux    = sync.Mutex{}
 )

@@ -1,10 +1,11 @@
 package getter
 
 import (
-	"github.com/fzdy-zz/proxypool/log"
-	"io/ioutil"
+	"io"
 	"regexp"
 	"sync"
+
+	"github.com/fzdy-zz/proxypool/log"
 
 	"github.com/fzdy-zz/proxypool/pkg/proxy"
 	"github.com/fzdy-zz/proxypool/pkg/tool"
@@ -24,7 +25,7 @@ func (w *WebFuzzSub) Get() proxy.ProxyList {
 		return nil
 	}
 	defer resp.Body.Close()
-	body, err := ioutil.ReadAll(resp.Body)
+	body, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return nil
 	}

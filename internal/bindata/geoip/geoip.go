@@ -6,7 +6,6 @@ package bingeoip
 
 import (
 	"fmt"
-	"io/ioutil"
 	"os"
 	"path/filepath"
 	"strings"
@@ -14,7 +13,7 @@ import (
 
 // bindataRead reads the given file from disk. It returns an error on failure.
 func bindataRead(path, name string) ([]byte, error) {
-	buf, err := ioutil.ReadFile(path)
+	buf, err := os.ReadFile(path)
 	if err != nil {
 		err = fmt.Errorf("Error reading asset %s at %s: %v", name, path, err)
 	}
@@ -179,7 +178,7 @@ func RestoreAsset(dir, name string) error {
 	if err != nil {
 		return err
 	}
-	err = ioutil.WriteFile(_filePath(dir, name), data, info.Mode())
+	err = os.WriteFile(_filePath(dir, name), data, info.Mode())
 	if err != nil {
 		return err
 	}

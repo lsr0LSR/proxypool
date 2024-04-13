@@ -43,18 +43,20 @@ func setupRouter() {
 
 	router.GET("/", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "assets/html/index.html", gin.H{
-			"domain":               config.Config.Domain,
-			"getters_count":        appcache.GettersCount,
-			"all_proxies_count":    appcache.AllProxiesCount,
-			"ss_proxies_count":     appcache.SSProxiesCount,
-			"ssr_proxies_count":    appcache.SSRProxiesCount,
-			"vmess_proxies_count":  appcache.VmessProxiesCount,
-			"vless_proxies_count":  appcache.VlessProxiesCount,
-			"trojan_proxies_count": appcache.TrojanProxiesCount,
-			"useful_proxies_count": appcache.UsefullProxiesCount,
-			"last_crawl_time":      appcache.LastCrawlTime,
-			"is_speed_test":        appcache.IsSpeedTest,
-			"version":              version,
+			"domain":                  config.Config.Domain,
+			"getters_count":           appcache.GettersCount,
+			"all_proxies_count":       appcache.AllProxiesCount,
+			"ss_proxies_count":        appcache.SSProxiesCount,
+			"ssr_proxies_count":       appcache.SSRProxiesCount,
+			"vmess_proxies_count":     appcache.VmessProxiesCount,
+			"vless_proxies_count":     appcache.VlessProxiesCount,
+			"trojan_proxies_count":    appcache.TrojanProxiesCount,
+			"hysteria_proxies_count":  appcache.HysteriaProxiesCount,
+			"hysteria2_proxies_count": appcache.Hysteria2ProxiesCount,
+			"useful_proxies_count":    appcache.UsefullProxiesCount,
+			"last_crawl_time":         appcache.LastCrawlTime,
+			"is_speed_test":           appcache.IsSpeedTest,
+			"version":                 version,
 		})
 	})
 
@@ -244,6 +246,24 @@ func setupRouter() {
 		}
 		c.String(200, vmessSub.Provide())
 	})
+	router.GET("/vless/sub", func(c *gin.Context) {
+		proxyCountry := c.DefaultQuery("c", "")
+		proxyNotCountry := c.DefaultQuery("nc", "")
+		proxySpeed := c.DefaultQuery("speed", "")
+		proxyFilter := c.DefaultQuery("filter", "")
+		proxies := appcache.GetProxies("proxies")
+		vlessSub := provider.VlessSub{
+			Base: provider.Base{
+				Proxies:    &proxies,
+				Types:      "vless",
+				Country:    proxyCountry,
+				NotCountry: proxyNotCountry,
+				Speed:      proxySpeed,
+				Filter:     proxyFilter,
+			},
+		}
+		c.String(200, vlessSub.Provide())
+	})
 	router.GET("/sip002/sub", func(c *gin.Context) {
 		proxyCountry := c.DefaultQuery("c", "")
 		proxyNotCountry := c.DefaultQuery("nc", "")
@@ -280,6 +300,45 @@ func setupRouter() {
 		}
 		c.String(200, trojanSub.Provide())
 	})
+
+	router.GET("/hy/sub", func(c *gin.Context) {
+		proxyCountry := c.DefaultQuery("c", "")
+		proxyNotCountry := c.DefaultQuery("nc", "")
+		proxySpeed := c.DefaultQuery("speed", "")
+		proxyFilter := c.DefaultQuery("filter", "")
+		proxies := appcache.GetProxies("proxies")
+		hysteriaSub := provider.HysteriaSub{
+			Base: provider.Base{
+				Proxies:    &proxies,
+				Types:      "hysteria",
+				Country:    proxyCountry,
+				NotCountry: proxyNotCountry,
+				Speed:      proxySpeed,
+				Filter:     proxyFilter,
+			},
+		}
+		c.String(200, hysteriaSub.Provide())
+	})
+
+	router.GET("/hy2/sub", func(c *gin.Context) {
+		proxyCountry := c.DefaultQuery("c", "")
+		proxyNotCountry := c.DefaultQuery("nc", "")
+		proxySpeed := c.DefaultQuery("speed", "")
+		proxyFilter := c.DefaultQuery("filter", "")
+		proxies := appcache.GetProxies("proxies")
+		hysteria2Sub := provider.Hysteria2Sub{
+			Base: provider.Base{
+				Proxies:    &proxies,
+				Types:      "hysteria2",
+				Country:    proxyCountry,
+				NotCountry: proxyNotCountry,
+				Speed:      proxySpeed,
+				Filter:     proxyFilter,
+			},
+		}
+		c.String(200, hysteria2Sub.Provide())
+	})
+
 	router.GET("/link/:id", func(c *gin.Context) {
 		idx := c.Param("id")
 		proxies := appcache.GetProxies("allproxies")

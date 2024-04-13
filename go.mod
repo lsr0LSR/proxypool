@@ -13,7 +13,7 @@ require (
 	github.com/heroku/x v0.2.0
 	github.com/ivpusic/grpool v1.0.0
 	github.com/jasonlvhit/gocron v0.0.1
-	github.com/metacubex/mihomo v1.11.9-0.20240410073428-16fadd24418e
+	github.com/metacubex/mihomo v1.11.9-0.20240413000243-d84f88b50fb8
 	github.com/oschwald/geoip2-golang v1.9.0
 	github.com/patrickmn/go-cache v2.1.0+incompatible
 	github.com/robertkrimen/otto v0.3.0
@@ -160,5 +160,3 @@ require (
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	lukechampine.com/blake3 v1.2.1 // indirect
 )
-
-replace github.com/metacubex/mihomo => github.com/MetaCubeX/mihomo v1.11.9-0.20240410073428-16fadd24418e // indirect

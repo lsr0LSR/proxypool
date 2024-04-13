@@ -2,10 +2,11 @@ package getter
 
 import (
 	"fmt"
-	"github.com/fzdy-zz/proxypool/log"
-	"io/ioutil"
+	"io"
 	"strings"
 	"sync"
+
+	"github.com/fzdy-zz/proxypool/log"
 
 	"github.com/fzdy-zz/proxypool/pkg/proxy"
 	"github.com/fzdy-zz/proxypool/pkg/tool"
@@ -86,7 +87,7 @@ func (g *TGChannelGetter) Get() proxy.ProxyList {
 		return result
 	}
 	defer resp.Body.Close()
-	body, err := ioutil.ReadAll(resp.Body)
+	body, err := io.ReadAll(resp.Body)
 	items := strings.Split(string(body), "\n")
 	for _, s := range items {
 		if strings.Contains(s, "enclosure url") { // get to xml node

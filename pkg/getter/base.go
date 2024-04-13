@@ -51,6 +51,7 @@ func ClashProxy2ProxyArray(origin []map[string]interface{}) proxy.ProxyList {
 		p, err := proxy.ParseProxyFromClashProxy(pjson)
 		if err == nil && p != nil {
 			results = append(results, p)
+			//正常	fmt.Println("输出ClashProxy2ProxyArray结果 \n", results)
 		}
 	}
 	return results
@@ -62,6 +63,7 @@ func GrepLinksFromString(text string) []string {
 	results = append(results, proxy.GrepVlessLinkFromString(text)...)
 	results = append(results, proxy.GrepSSLinkFromString(text)...)
 	results = append(results, proxy.GrepTrojanLinkFromString(text)...)
+	// fmt.Println("输出GrepLinksFromString结果 \n", results)
 	return results
 }
 

@@ -1,7 +1,5 @@
 github.com/3andne/restls-client-go v0.1.6 h1:tRx/YilqW7iHpgmEL4E1D8dAsuB0tFF3uvncS+B6I08=
 github.com/3andne/restls-client-go v0.1.6/go.mod h1:iEdTZNt9kzPIxjIGSMScUFSBrUH6bFRNg0BWlP4orEY=
-github.com/MetaCubeX/mihomo v1.11.9-0.20240410073428-16fadd24418e h1:EczBTq0WeC0LQdm8Dsfyfq5pb/Ca4i5/M8RREMY5cGg=
-github.com/MetaCubeX/mihomo v1.11.9-0.20240410073428-16fadd24418e/go.mod h1:8dSp4lU7JXoPyP+ZhhMqNZ2C7gql20k/LiKjBBGG/AU=
 github.com/PuerkitoBio/goquery v1.9.1 h1:mTL6XjbJTZdpfL+Gwl5U2h1l9yEkJjhmlTeV9VPW7UI=
 github.com/PuerkitoBio/goquery v1.9.1/go.mod h1:cW1n6TmIMDoORQU5IU/P1T3tGFunOeXEpGP2WHRwkbY=
 github.com/RyuaNerin/elliptic2 v1.0.0/go.mod h1:wWB8fWrJI/6EPJkyV/r1Rj0hxUgrusmqSj8JN6yNf/A=
@@ -209,6 +207,8 @@ github.com/metacubex/gopacket v1.1.20-0.20230608035415-7e2f98a3e759 h1:cjd4biTvO
 github.com/metacubex/gopacket v1.1.20-0.20230608035415-7e2f98a3e759/go.mod h1:UHOv2xu+RIgLwpXca7TLrXleEd4oR3sPatW6IF8wU88=
 github.com/metacubex/gvisor v0.0.0-20240320004321-933faba989ec h1:HxreOiFTUrJXJautEo8rnE1uKTVGY8wtZepY1Tii/Nc=
 github.com/metacubex/gvisor v0.0.0-20240320004321-933faba989ec/go.mod h1:8BVmQ+3cxjqzWElafm24rb2Ae4jRI6vAXNXWqWjfrXw=
+github.com/metacubex/mihomo v1.11.9-0.20240413000243-d84f88b50fb8 h1:SGeGpIGyyg1z2v3ek4jD4lQrrTjePaSTW/qOgfgilz4=
+github.com/metacubex/mihomo v1.11.9-0.20240413000243-d84f88b50fb8/go.mod h1:8dSp4lU7JXoPyP+ZhhMqNZ2C7gql20k/LiKjBBGG/AU=
 github.com/metacubex/quic-go v0.42.1-0.20240319071510-a251e5c66a5c h1:AhaPKvVqF3N/jXFmlW51Cf1+KddslKAsZqcdgGhZjr0=
 github.com/metacubex/quic-go v0.42.1-0.20240319071510-a251e5c66a5c/go.mod h1:iGx3Y1zynls/FjFgykLSqDcM81U0IKePRTXEz5g3iiQ=
 github.com/metacubex/sing-quic v0.0.0-20240409064816-c16ac6b1f4b4 h1:JB+BgUgQVicS1oGiw63c0xQWEAkUeuTylDy5WIaco7o=

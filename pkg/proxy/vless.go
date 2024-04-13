@@ -3,6 +3,7 @@ package proxy
 import (
 	"encoding/json"
 	"errors"
+	"fmt"
 	"net"
 	"net/url"
 	"regexp"
@@ -105,7 +106,6 @@ func ParseVlessLink(link string) (*Vless, error) {
 	if err != nil {
 		return nil, ErrorNotVlessink
 	}
-
 	password := uri.User.Username()
 	password, _ = url.QueryUnescape(password)
 
@@ -187,6 +187,7 @@ func GrepVlessLinkFromString(text string) []string {
 	texts := strings.Split(text, "vless://")
 	for _, text := range texts {
 		results = append(results, VlessPlainRe.FindAllString("vless://"+text, -1)...)
+		fmt.Println("输出vless-GrepVlessLinkFromString结果", results)
 	}
 	return results
 }

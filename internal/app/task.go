@@ -22,6 +22,7 @@ func CrawlGo() {
 	var pc = make(chan proxy.Proxy)
 	for _, g := range Getters {
 		wg.Add(1)
+		time.Sleep(500 * time.Millisecond)
 		go g.Get2ChanWG(pc, wg)
 	}
 	proxies := cache.GetProxies("allproxies")
@@ -83,6 +84,7 @@ func CrawlGo() {
 	round := len(proxies) / b
 	okproxies := make(proxy.ProxyList, 0)
 	for i := 0; i < round; i++ {
+		// fmt.Println("\n proxies结果 :", proxies[i])
 		okproxies = append(okproxies, healthcheck.CleanBadProxiesWithGrpool(proxies[i*b:(i+1)*b])...)
 		log.Infoln("\tChecking round: %d", i)
 	}
@@ -99,12 +101,12 @@ func CrawlGo() {
 	healthcheck.RelayCheck(proxies)
 	for i := range proxies {
 		if s, ok := healthcheck.ProxyStats.Find(proxies[i]); ok {
-			if s.Relay == true {
+			if s.Relay {
 				_, c, e := geoIp.GeoIpDB.Find(s.OutIp)
 				if e == nil {
 					proxies[i].SetName(fmt.Sprintf("Relay_%s-%s", proxies[i].BaseInfo().Name, c))
 				}
-			} else if s.Pool == true {
+			} else if s.Pool {
 				proxies[i].SetName(fmt.Sprintf("Pool_%s", proxies[i].BaseInfo().Name))
 			}
 		}

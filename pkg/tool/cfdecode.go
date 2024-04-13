@@ -3,11 +3,12 @@ package tool
 import (
 	"bytes"
 	"errors"
-	"github.com/robertkrimen/otto"
-	"io/ioutil"
+	"io"
 	"regexp"
 	"strconv"
 	"strings"
+
+	"github.com/robertkrimen/otto"
 )
 
 // Find email playload
@@ -43,7 +44,7 @@ func CFScriptRedirect(url string) (string, error) {
 		return url, err
 	}
 	defer resp.Body.Close()
-	body, err := ioutil.ReadAll(resp.Body)
+	body, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return url, err
 	}
