@@ -150,8 +150,6 @@ func ParseProxyFromClashProxy(p map[string]interface{}) (proxy Proxy, err error)
 		if err != nil {
 			return nil, err
 		}
-		//到这里还没有问题
-		//fmt.Println("获取到vless一个", &proxy)
 		return &proxy, nil
 	}
 	return nil, errors.New("clash json parse failed")

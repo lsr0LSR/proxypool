@@ -84,7 +84,6 @@ func CrawlGo() {
 	round := len(proxies) / b
 	okproxies := make(proxy.ProxyList, 0)
 	for i := 0; i < round; i++ {
-		// fmt.Println("\n proxies结果 :", proxies[i])
 		okproxies = append(okproxies, healthcheck.CleanBadProxiesWithGrpool(proxies[i*b:(i+1)*b])...)
 		log.Infoln("\tChecking round: %d", i)
 	}
