@@ -109,12 +109,12 @@ func testDelay(p proxy.Proxy) (delay uint16, err error) {
 	//err = HTTPHeadViaProxy(clashProxy, "https://www.youtube.com/generate_204")
 
 	//自定义添加添加协议检测点
-	if p.TypeName() == "vless" && err != nil {
+	/* if p.TypeName() == "vless" && err != nil {
 		fmt.Println("\n P测试节点:", p)
 		// fmt.Println("\n testDelay pmap目标 :", pmap)
 		fmt.Println("err结果 :", err)
 	}
-
+	*/
 	if err != nil {
 		return 0, err
 	}
